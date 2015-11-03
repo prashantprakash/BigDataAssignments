@@ -1,0 +1,19 @@
+drop table IF EXISTS movies_january;
+drop table IF EXISTS movies_february;
+drop table IF EXISTS movies_march;
+drop table IF EXISTS movies;
+CREATE TABLE IF NOT EXISTS movies (MovieID INT, Title STRING, Genres STRING) PARTITIONED BY (Month STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;';
+LOAD DATA LOCAL INPATH 'hive-partition-hw3/January.dat' OVERWRITE INTO TABLE movies PARTITION (Month = 'January');
+LOAD DATA LOCAL INPATH 'hive-partition-hw3/February.dat' OVERWRITE INTO TABLE movies PARTITION (Month = 'February');
+LOAD DATA LOCAL INPATH 'hive-partition-hw3/March.dat' OVERWRITE INTO TABLE movies PARTITION (Month = 'March');
+
+CREATE TABLE IF NOT EXISTS movies_january (MovieID int, MovieName string, Genre String) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;';
+CREATE TABLE IF NOT EXISTS movies_february (MovieID int, MovieName string, Genre String) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;';
+CREATE TABLE IF NOT EXISTS movies_march (MovieID int, MovieName string, Genre String) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;';
+
+from movies m
+insert overwrite table movies_january select m.MovieID, CONCAT(m.Title,'_',m.Month), m.Genres where m.Month='January'
+insert overwrite table movies_february select m.MovieID, CONCAT(m.Title,'_',m.Month), m.Genres where m.Month='February'
+insert overwrite table movies_march select m.MovieID, CONCAT(m.Title,'_',m.Month), m.Genres where m.Month='March';
+
+select * from movies_january;

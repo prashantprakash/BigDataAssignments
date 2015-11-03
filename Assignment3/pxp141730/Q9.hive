@@ -1,0 +1,7 @@
+ADD JAR Q9_formatGenre.jar;
+CREATE TEMPORARY FUNCTION FORMAT_GENRE AS 'FormatGenre';
+
+drop table IF EXISTS movies;
+CREATE TABLE IF NOT EXISTS movies (MovieID int, Title string, Genres String) ROW FORMAT DELIMITED FIELDS TERMINATED BY ':';
+LOAD DATA LOCAL INPATH 'movies.dat' OVERWRITE INTO TABLE movies;
+select MovieID,Title,FORMAT_GENRE(Genres,'${hiveconf:NetID}') from movies;

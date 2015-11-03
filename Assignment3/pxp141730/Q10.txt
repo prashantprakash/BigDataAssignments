@@ -1,0 +1,113 @@
+/* All Queries have been executed on  Cluster*/
+
+/*Command to get the cassandra CLI*/ 
+
+/usr/local/apache-cassandra-2.0.5/bin/cassandra-cli --host csac0
+
+/*Command to create keyspace with replication factor :1 */ 
+CREATE KEYSPACE pxp141730 WITH PLACEMENT_STRATEGY = 'org.apache.cassandra.locator.SimpleStrategy' AND STRATEGY_OPTIONS = [{replication_factor:1}];
+
+USE pxp141730;
+
+1. 
+
+CREATE COLUMN FAMILY users
+WITH comparator = UTF8Type
+AND key_validation_class=UTF8Type
+AND column_metadata = [
+	{column_name: UserID, validation_class: Int32Type, index_type: KEYS},
+	{column_name: Gender, validation_class: UTF8Type},
+	{column_name: Age, validation_class: Int32Type},
+	{column_name: Occupation, validation_class: Int32Type},
+	{column_name: ZipCode, validation_class: Int32Type}
+];
+
+
+2.
+i.
+SET users[13]['Gender'] = 'F';
+SET users[13]['Age'] = 51 ;
+SET users[13]['Occupation'] = 1;
+SET users[13]['ZipCode'] = 93334;
+
+ii.
+SET users[1471]['Gender'] = 'F';
+SET users[1471]['Age'] = 31 ;
+SET users[1471]['Occupation'] = 17;
+SET users[1471]['ZipCode'] = 11116;
+
+iii.
+SET users[1496]['Gender'] = 'F' WITH ttl=300;
+SET users[1496]['Age'] = 31 WITH ttl=300;
+SET users[1496]['Occupation'] = 17 WITH ttl=300;
+SET users[1496]['ZipCode'] = 94118 WITH ttl=300;
+
+
+3. 
+
+i.
+
+i)GET users[13]['Gender'];
+=> (name=Gender, value=F, timestamp=1427693966015000)
+
+GET users[13]['Occupation'];
+=> (name=Occupation, value=1, timestamp=1427694415329000)
+
+
+ii. 
+LIST users;
+
+Using default limit of 100
+Using default cell limit of 100
+-------------------
+RowKey: 1496
+=> (name=Age, value=31, timestamp=1427694433405000, ttl=300)
+=> (name=Gender, value=F, timestamp=1427694433400000, ttl=300)
+=> (name=Occupation, value=17, timestamp=1427694433425000, ttl=300)
+=> (name=ZipCode, value=94118, timestamp=1427694434120000, ttl=300)
+-------------------
+RowKey: 13
+=> (name=Age, value=51, timestamp=1427694415326000)
+=> (name=Gender, value=F, timestamp=1427694415309000)
+=> (name=Occupation, value=1, timestamp=1427694415329000)
+=> (name=ZipCode, value=93334, timestamp=1427694416051000)
+-------------------
+RowKey: 1471
+=> (name=Age, value=31, timestamp=1427694423507000)
+=> (name=Gender, value=F, timestamp=1427694423494000)
+=> (name=Occupation, value=17, timestamp=1427694423521000)
+=> (name=ZipCode, value=11116, timestamp=1427694424027000)
+
+3 Rows Returned.
+Elapsed time: 561 msec(s).
+
+
+iii. 
+DEL users[1471]['Gender'];
+
+iv.
+
+DROP COLUMN FAMILY users;
+
+
+4.
+
+DESCRIBE pxp141730;
+
+
+WARNING: CQL3 tables are intentionally omitted from 'describe' output.
+See https://issues.apache.org/jira/browse/CASSANDRA-4377 for details.
+
+Keyspace: pxp141730:
+  Replication Strategy: org.apache.cassandra.locator.SimpleStrategy
+  Durable Writes: true
+    Options: [replication_factor:1]
+  Column Families:
+
+
+
+
+
+
+
+

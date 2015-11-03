@@ -1,0 +1,25 @@
+[0m[[0minfo[0m] [0mPackaging D:\Spark\spark-1.2.1\spark-1.2.1\spark-1.2.1\bin\KMeans\target\scala-2.10\kmeans_2.10-1.0.jar ...[0m
+[0m[[0mdebug[0m] [0mInput file mappings:[0m
+[0m[[0mdebug[0m] [0m	KMeans$$anonfun$main$1$$anonfun$apply$mcVI$sp$1.class[0m
+[0m[[0mdebug[0m] [0m	  D:\Spark\spark-1.2.1\spark-1.2.1\spark-1.2.1\bin\KMeans\target\scala-2.10\classes\KMeans$$anonfun$main$1$$anonfun$apply$mcVI$sp$1.class[0m
+[0m[[0mdebug[0m] [0m	KMeans$$anonfun$main$1$$anonfun$4.class[0m
+[0m[[0mdebug[0m] [0m	  D:\Spark\spark-1.2.1\spark-1.2.1\spark-1.2.1\bin\KMeans\target\scala-2.10\classes\KMeans$$anonfun$main$1$$anonfun$4.class[0m
+[0m[[0mdebug[0m] [0m	KMeans$$anonfun$main$1$$anonfun$3.class[0m
+[0m[[0mdebug[0m] [0m	  D:\Spark\spark-1.2.1\spark-1.2.1\spark-1.2.1\bin\KMeans\target\scala-2.10\classes\KMeans$$anonfun$main$1$$anonfun$3.class[0m
+[0m[[0mdebug[0m] [0m	KMeans$$anonfun$2.class[0m
+[0m[[0mdebug[0m] [0m	  D:\Spark\spark-1.2.1\spark-1.2.1\spark-1.2.1\bin\KMeans\target\scala-2.10\classes\KMeans$$anonfun$2.class[0m
+[0m[[0mdebug[0m] [0m	KMeans$$anonfun$main$1.class[0m
+[0m[[0mdebug[0m] [0m	  D:\Spark\spark-1.2.1\spark-1.2.1\spark-1.2.1\bin\KMeans\target\scala-2.10\classes\KMeans$$anonfun$main$1.class[0m
+[0m[[0mdebug[0m] [0m	KMeans$$anonfun$average$1.class[0m
+[0m[[0mdebug[0m] [0m	  D:\Spark\spark-1.2.1\spark-1.2.1\spark-1.2.1\bin\KMeans\target\scala-2.10\classes\KMeans$$anonfun$average$1.class[0m
+[0m[[0mdebug[0m] [0m	KMeans$.class[0m
+[0m[[0mdebug[0m] [0m	  D:\Spark\spark-1.2.1\spark-1.2.1\spark-1.2.1\bin\KMeans\target\scala-2.10\classes\KMeans$.class[0m
+[0m[[0mdebug[0m] [0m	KMeans.class[0m
+[0m[[0mdebug[0m] [0m	  D:\Spark\spark-1.2.1\spark-1.2.1\spark-1.2.1\bin\KMeans\target\scala-2.10\classes\KMeans.class[0m
+[0m[[0mdebug[0m] [0m	KMeans$$anonfun$closestClusterIndex$1.class[0m
+[0m[[0mdebug[0m] [0m	  D:\Spark\spark-1.2.1\spark-1.2.1\spark-1.2.1\bin\KMeans\target\scala-2.10\classes\KMeans$$anonfun$closestClusterIndex$1.class[0m
+[0m[[0mdebug[0m] [0m	KMeans$$anonfun$1.class[0m
+[0m[[0mdebug[0m] [0m	  D:\Spark\spark-1.2.1\spark-1.2.1\spark-1.2.1\bin\KMeans\target\scala-2.10\classes\KMeans$$anonfun$1.class[0m
+[0m[[0mdebug[0m] [0m	KMeans$Point.class[0m
+[0m[[0mdebug[0m] [0m	  D:\Spark\spark-1.2.1\spark-1.2.1\spark-1.2.1\bin\KMeans\target\scala-2.10\classes\KMeans$Point.class[0m
+[0m[[0minfo[0m] [0mDone packaging.[0m

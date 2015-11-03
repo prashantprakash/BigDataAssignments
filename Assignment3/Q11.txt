@@ -1,0 +1,48 @@
+cd /usr/local/apache-cassandra-2.0.5/bin
+
+./cqlsh csac0 9160
+
+use pxp141730;
+1.
+
+CREATE TABLE users (
+	userid INT PRIMARY KEY,
+	gender varchar,
+	age INT,
+	occupation INT,
+	zipcode VARCHAR
+);
+
+2.
+
+COPY users (userid, gender, age, occupation, zipcode) FROM '/home/004/p/px/pxp141730/users.dat' WITH DELIMITER=':';
+
+3.
+
+INSERT INTO users (userid, gender, age, occupation, zipcode) VALUES (6041, 'M', 32, 6, '11120');
+
+4.
+
+SELECT * FROM users WHERE userid = 6020;
+
+
+ userid | age | gender | occupation | zipcode
+--------+-----+--------+------------+---------
+   6020 |  56 |      F |         16 |   10003
+
+(1 rows)
+
+
+5.
+
+TRUNCATE users;
+
+6.
+
+DROP TABLE users;
+
+
+
+
+
+

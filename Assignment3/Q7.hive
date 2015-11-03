@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS movies;
+CREATE TABLE IF NOT EXISTS movies (MovieID INT, Title STRING, Genres STRING) PARTITIONED BY (Month STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\;';
+LOAD DATA LOCAL INPATH 'hive-partition-hw3/January.dat' OVERWRITE INTO TABLE movies PARTITION (Month = 'January');
+LOAD DATA LOCAL INPATH 'hive-partition-hw3/February.dat' OVERWRITE INTO TABLE movies PARTITION (Month = 'February');
+LOAD DATA LOCAL INPATH 'hive-partition-hw3/March.dat' OVERWRITE INTO TABLE movies PARTITION (Month = 'March');
+SELECT * FROM movies WHERE Month == 'March';

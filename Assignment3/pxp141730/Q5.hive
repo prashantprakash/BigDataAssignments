@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS ratings;
+
+CREATE TABLE IF NOT EXISTS movies (MovieID int , Title String, Genres String) ROW FORMAT DELIMITED FIELDS TERMINATED BY ':';
+LOAD DATA LOCAL INPATH 'movies.dat' OVERWRITE INTO TABLE movies;
+
+CREATE TABLE IF NOT EXISTS ratings (UserID int, MovieID int, Rating double,Time_stamp String) ROW FORMAT DELIMITED FIELDS TERMINATED BY ':';
+LOAD DATA LOCAL INPATH 'ratings.dat' OVERWRITE INTO TABLE ratings;
+select am.*, ar.avg_rating 
+from (select * from movies m where m.Genres LIKE "%Comedy%") am 
+join (select r.MovieID, AVG(r.Rating) as avg_rating from ratings r group by r.MovieID) ar 
+on (am.MovieID = ar.MovieID) 
+order by ar.avg_rating desc 
+limit LIMIT ${hiveconf:X};

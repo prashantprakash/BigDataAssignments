@@ -1,0 +1,1 @@
+mahout spark-itemsimilarity --input /ratings.dat --output /tess --filter1 3 --inDelim "::" --itemIDColumn 1 --rowIDColumn 0 --filterColumn 2

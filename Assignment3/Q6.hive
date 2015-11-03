@@ -1,0 +1,20 @@
+drop table IF EXISTS users;
+drop table IF EXISTS movies;
+drop table IF EXISTS ratings;
+
+CREATE TABLE IF NOT EXISTS users (UserID int, Gender string, Age int, Occupation int,Zipcode string) ROW FORMAT DELIMITED FIELDS TERMINATED BY ':';
+LOAD DATA LOCAL INPATH 'users.dat' OVERWRITE INTO TABLE users;
+
+CREATE TABLE IF NOT EXISTS movies (MovieID int, Title string, Genres String) ROW FORMAT DELIMITED FIELDS TERMINATED BY ':';
+LOAD DATA LOCAL INPATH 'movies.dat' OVERWRITE INTO TABLE movies;
+
+CREATE TABLE IF NOT EXISTS ratings (UserID INT, MovieID INT, Rating DOUBLE, Time_stamp STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY ':';
+LOAD DATA LOCAL INPATH 'ratings.dat' OVERWRITE INTO TABLE ratings;
+
+select m.*, ma.avg_rating 
+from (select r.MovieID, AVG(r.Rating) as avg_rating 
+from users u join ratings r on (u.UserID = r.UserID) 
+group by r.MovieID 
+having SUM(IF(u.Gender = 'F', 1, 0)) = 0 and AVG(r.Rating) between 4.5 and 4.6) ma 
+join (select * from movies where Genres LIKE "%Comedy%" or Genres LIKE "%Drama%") m 
+on (ma.MovieID = m.MovieID);
